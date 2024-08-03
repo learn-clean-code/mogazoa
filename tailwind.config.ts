@@ -3,8 +3,8 @@ import type { Config } from "tailwindcss"
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./shared/**/*.{js,ts,jsx,tsx,mdx}",
+    "./features/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -22,6 +22,8 @@ const config: Config = {
         indigo: "#5363FF",
         blue: "#5097FA",
         background: "#1C1C22",
+        "input-background": "#252530",
+        "input-border": "#353542",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
