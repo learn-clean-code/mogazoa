@@ -17,8 +17,13 @@ button {
   cursor: pointer;
   border: none;
   background-color: none;
+  display: block;
 }
 
 a {
   color: inherit;
+}
+
+img {
+  display: block;
 }
