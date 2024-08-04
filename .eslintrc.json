@@ -1,6 +1,7 @@
 {
-  "extends": "next/core-web-vitals",
-  "plugins": ["prettier"],
+  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
+  "plugins": ["prettier", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
   "rules": {
     "no-var": "warn",
     "no-multiple-empty-lines": "warn",
