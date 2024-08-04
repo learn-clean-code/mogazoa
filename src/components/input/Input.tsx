@@ -10,8 +10,8 @@ interface InputProps {
   labelVisible?: boolean
   name?: string
   value?: string
-  email?: string
-  password?: string
+  email?: boolean
+  password?: boolean
   placeholder?: string
   readOnly?: boolean
   disabled?: boolean

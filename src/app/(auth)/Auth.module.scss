@@ -4,28 +4,13 @@
   place-items: center;
 
   .container {
-    width: 576px;
-
-    .logo {
-      text-align: center;
-      margin-bottom: 50px;
-    }
+    width: 640px;
 
     .form {
       display: flex;
       flex-flow: column;
       width: 100%;
-      max-width: 578px;
-
-      .control {
-        margin-bottom: 20px;
-      }
-
-      .group {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 2px;
-      }
+      gap: 4rem;
 
       .buttonGroup {
         margin: 2rem 0;

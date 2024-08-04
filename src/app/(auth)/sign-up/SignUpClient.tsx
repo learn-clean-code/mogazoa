@@ -2,31 +2,61 @@
 import { useState } from 'react'
 
 import Input from '@/components/input/Input'
+import styles from '@/app/(auth)/Auth.module.scss'
 
 export default function SignUpClient() {
   const [email, setEmail] = useState('')
+  const [nickname, setNickname] = useState('')
   const [password, setPassword] = useState('')
 
   return (
-    <div>
-      <form>
-        <Input
-          id="email"
-          name="email"
-          value={email}
-          label="이메일"
-          placeholder="이메일을 입력해 주세요"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <Input
-          id="password"
-          name="password"
-          value={password}
-          label="비밀번호"
-          placeholder="비밀번호"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </form>
-    </div>
+    <section className={styles.page}>
+      <div className={styles.container}>
+        <form className={styles.form}>
+          <Input
+            email
+            id="email"
+            name="email"
+            value={email}
+            label="이메일"
+            labelVisible
+            placeholder="이메일을 입력해 주세요"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <Input
+            id="nickname"
+            name="nickname"
+            value={password}
+            label="닉네임"
+            labelVisible
+            placeholder="닉네임을 입력해 주세요"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <Input
+            password
+            id="password"
+            name="password"
+            value={password}
+            label="비밀번호"
+            labelVisible
+            placeholder="비밀번호를 입력해 주세요"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <Input
+          password
+            id="password"
+            name="password"
+            value={password}
+            label="비밀번호 확인"
+            labelVisible
+            placeholder="비밀번호를 한번 더 입력해 주세요"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </form>
+      </div>
+    </section>
   )
 }

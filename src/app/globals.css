@@ -1,9 +1,11 @@
 :root {
   --font-family: Pretendard, sans-serif;
 
-  --black-3: #17171c;
-  --black-2: #21212a;
-  --black-1: #2e2e3a;
+  --black-5: #17171c;
+  --black-4: #21212a;
+  --black-3: #252530;
+  --black-2: #2e2e3a;
+  --black-1: #353542;
 
   --gray-2: #6e6e82;
   --gray-1: #9fa6b2;
@@ -18,6 +20,8 @@
   --green: #05d58b;
   --pink: #ff2f9f;
   --red: #ff0000;
+
+  --background: #1c1c22;
 }
 
 * {
@@ -33,9 +37,18 @@ html {
 
 body {
   font-family: var(--font-family);
+  background-color: var(--background);
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  border: none;
 }
