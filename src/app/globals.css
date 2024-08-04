@@ -1,0 +1,54 @@
+:root {
+  --font-family: Pretendard, sans-serif;
+
+  --black-5: #17171c;
+  --black-4: #21212a;
+  --black-3: #252530;
+  --black-2: #2e2e3a;
+  --black-1: #353542;
+
+  --gray-2: #6e6e82;
+  --gray-1: #9fa6b2;
+
+  --white: #f1f1f5;
+
+  --main-gradation: linear-gradient(91deg, #5097fa 0%, #5363ff 100%);
+  --main-blue: #5097fa;
+  --main-indigo: #5363ff;
+
+  --yellow: #ffc83c;
+  --green: #05d58b;
+  --pink: #ff2f9f;
+  --red: #ff0000;
+
+  --background: #1c1c22;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  border: none;
+}
