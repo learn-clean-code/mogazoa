@@ -1,11 +1,11 @@
-import { ChangeEvent, HTMLAttributes, InputHTMLAttributes, LabelHTMLAttributes, ReactNode } from "react"
+import { ChangeEvent, FocusEvent, HTMLAttributes, InputHTMLAttributes, LabelHTMLAttributes, ReactNode } from "react"
 
 export interface FormControlContextType {
   id: string
   value: string
-  hasError: boolean
-  onInputChange: (event: ChangeEvent<HTMLInputElement>) => void
-  onInputBlur: () => void
+  hasError: string | boolean
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+  onBlur: (event: FocusEvent<HTMLInputElement>) => void
 }
 
 export interface FormControlProps extends FormControlContextType {
@@ -20,10 +20,7 @@ export interface LayoutProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
 }
 
-export interface ErrorMessageProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactNode
-  errorMessage?: { status: number | undefined; data: { message: string } } | null
-}
+export interface ErrorMessageProps extends HTMLAttributes<HTMLDivElement> {}
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 

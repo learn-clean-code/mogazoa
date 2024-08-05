@@ -16,9 +16,9 @@ import EyeCloseIcon from "@/public/images/icons/eye-close.svg"
 export const FormControlContext = createContext<FormControlContextType>({
   id: "",
   value: "",
-  hasError: false,
-  onInputChange: () => {},
-  onInputBlur: () => {},
+  hasError: "",
+  onChange: () => {},
+  onBlur: () => {},
 })
 
 function useFormControlContext() {
@@ -47,9 +47,10 @@ export function Input(props: InputProps) {
     <input
       type={props.type || "text"}
       placeholder={props.placeholder}
+      name={formControlContext.id}
       id={formControlContext.id}
-      onChange={formControlContext.onInputChange}
-      onBlur={formControlContext.onInputBlur}
+      onChange={formControlContext.onChange}
+      onBlur={formControlContext.onBlur}
       value={formControlContext.value}
       className={`text-base h-[70px] text-gray-50 rounded-lg px-5 placeholder:text-gray-200 bg-input-background border border-input-border ${errorClassName} ${props.className}`}
     />
@@ -59,7 +60,7 @@ export function Input(props: InputProps) {
 export function ErrorMessage(props: ErrorMessageProps) {
   const formControlContext = useFormControlContext()
   if (!formControlContext.hasError) return null
-  return <p className={`text-sm ${props.className}`}>{props.children}</p>
+  return <p className={`text-sm ${props.className}`}>{formControlContext.hasError}</p>
 }
 
 export function Layout(props: LayoutProps) {
@@ -89,9 +90,10 @@ export function Password(props: InputProps) {
       <input
         type={isToggle ? "text" : "password"}
         placeholder={props.placeholder}
+        name={formControlContext.id}
         id={formControlContext.id}
-        onChange={formControlContext.onInputChange}
-        onBlur={formControlContext.onInputBlur}
+        onChange={formControlContext.onChange}
+        onBlur={formControlContext.onBlur}
         value={formControlContext.value}
         className={`w-full text-base h-[70px] text-gray-50 rounded-lg px-5 placeholder:text-gray-200 bg-input-background border border-input-border ${errorClassName} ${props.className}`}
       />
