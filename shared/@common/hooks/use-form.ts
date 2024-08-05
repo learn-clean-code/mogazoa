@@ -1,20 +1,13 @@
 import { useState, FocusEventHandler, ChangeEventHandler, useEffect, useCallback, FormEvent } from "react"
+import type { UseForm, Submitter } from "@common/types"
 
-interface Props<T> {
-  defaultValues: T
-  validate: (values: T) => Partial<T>
-}
-
-type Submitter<T> = (values: T) => void | Promise<void>
-
-export default function useForm<T>({ defaultValues, validate }: Props<T>) {
+export default function useForm<T>({ defaultValues, validate }: UseForm<T>) {
   const [values, setValues] = useState(defaultValues)
   const [isTouched, setIsTouched] = useState<Partial<T>>({})
   const [errors, setErrors] = useState<Partial<T>>({})
 
   const handleSubmit = (submitter: Submitter<T>) => async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-
     await submitter(values)
   }
 
