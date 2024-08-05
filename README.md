@@ -1,40 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 폴더 구조
 
-## Getting Started
+저번과 마찬가지로 프로젝트가 커질 것을 생각하여 FDD 방식으로 폴더 구성을 했습니다.
 
-First, run the development server:
+## Form
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+기존에 폼을 만들었을 때에는 사용자가 인풋에 포커스 아웃되었을 때 해당 값을 입력하라는 에러 메세지를 보여주게했지만, 문제는 폼이 제출되었을 때에도 해당 인풋에 에러메세지를 보여주어야했어요. 하지만 이 과정에서 시간을 6시간 이상 투자했습니다. 구현에는 문제가 없었지만 클린 코드 관점으로 좋지 않다라고 생각했고 많은 고민을 했어요.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 첫번째 고민.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+솔직히 React Hook Form을 사용하고 싶지않았어요. 이유는 폼이 많지가 않으면 리렌더링 이슈는 큰 문제가 될거라고 생각하지 않았고, 나의 힘으로 만들고 싶었어요. 내가 생각하는 대로 만들면 문제 없을거라고 했지만.. 결국은 문제가 많았어요
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### 두번째 고민.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+아무리 많은 고민을해도 진전은 없었고 시간만 지나가고 있었어요. 그런데 생각해보니까 React Hook Form이던 Formik이던 비슷하게 구현이 되어있더라고요. 결국은 폼(Input, Submit)을 함께 관리한다는 특징을 발견했고, 이미 이러한 라이브러리들이 각광받는데에는 다 이유가 있으니 내가 생각한게 틀린 방향이구나를 느꼈어요. 유명한데에는 뭐든 다 이유가 있었고 사용하기 편하니까 없으면 안될정도라는 느낌을 받았어요.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 세번째 고민.
 
-## Learn More
+React Hook Form 패키지를 다운받아야하는지 고민을 많이 했습니다. 하지만 차라리 공부하는거라면 React Hook Form과 비슷하게 만들어보자 (용량으로는 500배 정도 차이나지 않을까 했습니다.) 그래서 이미 만들어져있는 React Hook Form을 하나하나 찾아보면서 이런 식으로 만들어졌구나를 알게되어서 한번 만들어보았고, 관련한 자료도 찾아봤습니다. (천재가 아니라 정말 소스코드만 보고는 못하겠더라고요.)
 
-To learn more about Next.js, take a look at the following resources:
+하지만 조금 아쉬운건, Ref를 사용하는 것이 조금 어려울 것 같아서 상태관리를 이용한 리액트 훅 폼과 비슷하게 동작하도록 만들었습니다. 아마 다음시간에는 Ref를 사용한 것까지 적용하지 않을까 싶네요.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 느낀 점.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+정말 Form이 별거 아닌 것 같은데 생각보다 많이 힘드네요. 그래도 이렇게 직접 만들어보고 많은 고민을 하면서 더 많이 배울 수 있었던 것 같아서 기분이 좋네요. 정말 성장하는 느낌입니다!!
