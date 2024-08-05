@@ -6,8 +6,13 @@ export default function useForm<T>({ defaultValues, validate }: UseForm<T>) {
   const [isTouched, setIsTouched] = useState<Partial<T>>({})
   const [errors, setErrors] = useState<Partial<T>>({})
 
+  const isFormError = Object.values(errors).some((error) => !!error)
+
   const handleSubmit = (submitter: Submitter<T>) => async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    if (isFormError) return
+
     await submitter(values)
   }
 
@@ -45,8 +50,6 @@ export default function useForm<T>({ defaultValues, validate }: UseForm<T>) {
     }
   }
 
-  console.log(errors)
-
   return {
     values,
     errors,
@@ -54,5 +57,6 @@ export default function useForm<T>({ defaultValues, validate }: UseForm<T>) {
     register,
     handleSubmit,
     handleSetError,
+    isFormError,
   }
 }

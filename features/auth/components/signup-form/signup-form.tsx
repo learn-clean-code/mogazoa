@@ -13,7 +13,7 @@ interface DefaultValues {
 }
 
 export default function SignupForm() {
-  const { register, handleSubmit, handleSetError } = useForm<DefaultValues>({
+  const { register, handleSubmit, handleSetError, isFormError } = useForm<DefaultValues>({
     defaultValues: {
       email: "",
       nickname: "",
@@ -85,7 +85,11 @@ export default function SignupForm() {
         </FormControl.Layout>
       </FormControl>
 
-      <Button className="gradient w-full h-[65px] rounded-lg mt-[20px]" type="submit">
+      <Button
+        className="gradient w-full h-[65px] rounded-lg mt-[20px] disabled:cursor-not-allowed disabled:bg-gray-100 disabled:bg-none"
+        type="submit"
+        disabled={isFormError}
+      >
         가입하기
       </Button>
     </form>
