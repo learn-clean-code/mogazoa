@@ -1,4 +1,4 @@
 import useToggle from "./use-toggle"
-import useInput from "./use-input"
+import useForm from "./use-form"
 
-export { useToggle, useInput }
+export { useToggle, useForm }
