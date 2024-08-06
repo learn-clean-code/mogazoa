@@ -1,41 +1,14 @@
-import { useCallback } from "react"
 import { Button, FormControl } from "@common/components"
 import { useForm } from "@common/hooks"
-import { emailValidation, nicknameValidation, passwordConfirmValidation, passwordValidation } from "@common/utils"
 import { AuthApiInstance } from "@/shared/@common/services"
 import { AxiosError } from "axios"
-
-interface DefaultValues {
-  email: string
-  nickname: string
-  password: string
-  passwordConfirm: string
-}
+import { validate, defaultValues } from "@/features/auth/helper"
+import type { DefaultValues } from "@/features/auth/types"
 
 export default function SignupForm() {
   const { register, handleSubmit, handleSetError, isFormError } = useForm<DefaultValues>({
-    defaultValues: {
-      email: "",
-      nickname: "",
-      password: "",
-      passwordConfirm: "",
-    },
-    validate: useCallback((values) => {
-      const error: Partial<DefaultValues> = {
-        email: "",
-        nickname: "",
-        password: "",
-        passwordConfirm: "",
-      }
-
-      if (!emailValidation(values.email)) error.email = "이메일 형식이 유효하지 않습니다."
-      if (!nicknameValidation(values.nickname)) error.nickname = "닉네임 형식이 유효하지 않습니다."
-      if (!passwordValidation(values.password)) error.password = "비밀번호 형식이 유효하지 않습니다."
-      if (!passwordConfirmValidation(values.password, values.passwordConfirm))
-        error.passwordConfirm = "비밀번호가 일치하지 않습니다."
-
-      return error
-    }, []),
+    defaultValues: defaultValues,
+    validate: validate,
   })
 
   const submitter = async (values: DefaultValues) => {
