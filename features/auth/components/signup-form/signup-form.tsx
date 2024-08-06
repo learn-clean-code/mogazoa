@@ -6,12 +6,12 @@ import { validate, defaultValues } from "@/features/auth/helper"
 import type { DefaultValues } from "@/features/auth/types"
 
 export default function SignupForm() {
-  const { register, handleSubmit, handleSetError, isFormError } = useForm<DefaultValues>({
+  const { register, handleSubmit, isFormError } = useForm<DefaultValues>({
     defaultValues: defaultValues,
     validate: validate,
   })
 
-  const submitter = async (values: DefaultValues) => {
+  const onSubmit = async (values: DefaultValues) => {
     try {
       await AuthApiInstance.signup({
         email: values.email,
@@ -21,14 +21,12 @@ export default function SignupForm() {
       })
     } catch (err) {
       const error = err as AxiosError<{ message: string }, any>
-      handleSetError({
-        email: error.response!.data.message || "알 수 없는 에러가 발생했어요",
-      })
+      throw { email: error.response!.data.message || "알 수 없는 에러가 발생했어요" }
     }
   }
 
   return (
-    <form className="w-[640px] flex flex-col gap-y-10" onSubmit={handleSubmit(submitter)}>
+    <form className="w-[640px] flex flex-col gap-y-10" onSubmit={handleSubmit(onSubmit)}>
       <FormControl {...register("email")} id="email">
         <FormControl.Layout>
           <FormControl.Label>이메일</FormControl.Label>

@@ -13,7 +13,12 @@ export default function useForm<T>({ defaultValues, validate }: UseForm<T>) {
 
     if (isFormError) return
 
-    await submitter(values)
+    try {
+      const result = await submitter(values)
+    } catch (err) {
+      const error = err as Partial<T>
+      handleSetError(error)
+    }
   }
 
   const handleBlur: FocusEventHandler<HTMLInputElement> = (event) =>
