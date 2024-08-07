@@ -1,20 +1,20 @@
 import { useState, FocusEventHandler, ChangeEventHandler, useEffect, useCallback, FormEvent } from "react"
-import type { UseForm, Submitter } from "@common/types"
+import type { UseForm } from "@common/types"
 
-export default function useForm<T>({ defaultValues, validate }: UseForm<T>) {
+export default function useForm<T>({ defaultValues, validate, onSubmit }: UseForm<T>) {
   const [values, setValues] = useState(defaultValues)
   const [isTouched, setIsTouched] = useState<Partial<T>>({})
   const [errors, setErrors] = useState<Partial<T>>({})
 
   const isFormError = Object.values(errors).some((error) => !!error)
 
-  const handleSubmit = (submitter: Submitter<T>) => async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     if (isFormError) return
 
     try {
-      const result = await submitter(values)
+      const result = await onSubmit(values)
     } catch (err) {
       const error = err as Partial<T>
       handleSetError(error)
@@ -54,6 +54,8 @@ export default function useForm<T>({ defaultValues, validate }: UseForm<T>) {
       onChange: handleChange,
     }
   }
+
+  console.log(errors)
 
   return {
     values,
