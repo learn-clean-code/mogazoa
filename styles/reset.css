@@ -1,0 +1,29 @@
+:root {
+  --background: #1c1c22;
+  --defaultColor: #f1f1f5;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--defaultColor);
+  background-color: var(--background);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: none;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+}
