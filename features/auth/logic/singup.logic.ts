@@ -5,7 +5,7 @@ import {
   passwordValidation,
 } from "@/shared/@common/utils"
 import type { DefaultValues } from "../types/signup.type"
-import { AuthApiInstance } from "@/shared/@common/services"
+import { AuthApiInstance } from "@common/services"
 import { AxiosError } from "axios"
 
 export const validate = (values: DefaultValues) => {
@@ -30,4 +30,18 @@ export const defaultValues: DefaultValues = {
   nickname: "",
   password: "",
   passwordConfirm: "",
+}
+
+export const onSubmit = async (values: DefaultValues) => {
+  try {
+    await AuthApiInstance.signup({
+      email: values.email,
+      nickname: values.nickname,
+      password: values.password,
+      passwordConfirmation: values.passwordConfirm,
+    })
+  } catch (err) {
+    const error = err as AxiosError<{ message: string }, any>
+    throw { email: error.response!.data.message || "알 수 없는 에러가 발생했어요" }
+  }
 }
